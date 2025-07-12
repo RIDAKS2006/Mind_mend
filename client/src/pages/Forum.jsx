@@ -8,12 +8,12 @@ const Forum = () => {
   const [anon, setAnon] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/forum').then(res => setPosts(res.data));
+    axios.get('/forum').then(res => setPosts(res.data));
   }, []);
 
   const submit = async () => {
-    await axios.post('/api/forum', { content, anonymous: anon });
-    const res = await axios.get('/api/forum');
+    await axios.post('/forum', { content, anonymous: anon });
+    const res = await axios.get('/forum');
     setPosts(res.data);
     setContent('');
   };

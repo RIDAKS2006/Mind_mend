@@ -19,7 +19,7 @@ const TherapistMeeting = () => {
         }
 
         // Fetch room ID from backend
-        const { data } = await axios.get(`/api/booking/${bookingId}/room`);
+        const { data } = await axios.get(`/booking/${bookingId}/room`);
         const { roomId } = data;
         setRoomId(roomId);
 

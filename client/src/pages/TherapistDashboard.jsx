@@ -6,7 +6,7 @@ const TherapistDashboard = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/booking').then(res => setBookings(res.data));
+    axios.get('/booking').then(res => setBookings(res.data));
   }, []);
 
   return (

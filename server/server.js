@@ -15,6 +15,12 @@ connectDB();
 // Middleware to parse JSON
 app.use(express.json());
 
+app.use(cors({
+  origin: "http://localhost:5174", // Allow your React app
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 // API Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
@@ -23,11 +29,6 @@ app.use('/api/booking', require('./routes/bookingRoutes'));
 app.use('/api/resources', require('./routes/resourceRoutes'));
 app.use('/api/forum', require('./routes/forumRoutes'));
 app.use('/api/therapist', require('./routes/therapistRoutes'));
-
-app.use(cors({
-  origin: 'http://localhost:5174', // your frontend's origin
-  credentials: true,              // allow cookies, if used
-}));
 
 // Root route
 app.get('/', (req, res) => {

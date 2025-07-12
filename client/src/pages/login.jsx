@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/auth/login', form);
+      const { data } = await axios.post('/auth/login', form);
       localStorage.setItem('token', data.token);
       navigate('/dashboard');
     } catch (err) {

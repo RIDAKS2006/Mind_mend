@@ -13,7 +13,7 @@ const Booking = () => {
 
   const submit = async () => {
     try {
-      await axios.post('/api/booking', sel);
+      await axios.post('/booking', sel);
       setMsg('Booked successfully!');
     } catch (e) {
       setMsg('Booking error: ' + e.response?.data?.message);

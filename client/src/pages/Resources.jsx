@@ -6,7 +6,7 @@ const Resources = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/resources')
+    axios.get('/resources')
       .then(res => setItems(res.data))
       .catch(err => console.error('Resources load error', err));
   }, []);
