@@ -22,8 +22,10 @@ app.use('/api/mood', require('./routes/moodRoutes'));
 app.use('/api/booking', require('./routes/bookingRoutes'));
 app.use('/api/resources', require('./routes/resourceRoutes'));
 app.use('/api/forum', require('./routes/forumRoutes'));
+app.use('/api/therapist', require('./routes/therapistRoutes'));
+
 app.use(cors({
-  origin: 'http://localhost:5173', // your frontend's origin
+  origin: 'http://localhost:5174', // your frontend's origin
   credentials: true,              // allow cookies, if used
 }));
 
@@ -36,7 +38,7 @@ app.get('/', (req, res) => {
 initSocket(server); // This should export a function that receives the server
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 server.listen(PORT, () => {
   console.log(` Server running on port ${PORT}`);
 });
