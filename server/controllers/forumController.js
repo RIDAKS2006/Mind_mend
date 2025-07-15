@@ -13,5 +13,18 @@ const getPosts = async (req, res) => {
     .populate('user', 'name');
   res.json(posts);
 };
+const deleteForumPost = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const deletedPost = await ForumPost.findByIdAndDelete(postId);
 
-module.exports = { createPost, getPosts };
+    if (!deletedPost) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+module.exports = { createPost, getPosts,  deleteForumPost };

@@ -11,15 +11,23 @@ const Login = () => {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post('/auth/login', form);
-      localStorage.setItem('token', data.token);
+  e.preventDefault();
+  try {
+    const { data } = await axios.post('/auth/login', form);
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user)); // ✅ Save user with role
+
+    // ✅ Redirect based on role
+    if (data.user.role === 'therapist') {
+      navigate('/therapist/dashboard');
+    } else {
       navigate('/dashboard');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
     }
+  } catch (err) {
+    setError(err.response?.data?.message || 'Login failed');
+  }
   };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

@@ -12,12 +12,16 @@ const TherapistDashboard = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Therapist Dashboard</h1>
-      {bookings.map(b => (
-        <div key={b._id} className="p-3 bg-white shadow mb-2">
-          <p>User: {b.user.name}</p>
-          <p>Date: {b.date} at {b.time}</p>
-        </div>
-      ))}
+      {bookings.length === 0 ? (
+        <p>No upcoming appointments.</p>
+      ) : (
+        bookings.map(b => (
+          <div key={b._id} className="p-3 bg-white shadow mb-2">
+            <p>User: {b.user.name}</p>
+            <p>Date: {b.date} at {b.time}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 };

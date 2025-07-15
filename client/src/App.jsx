@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import TherapistDashboard from "./pages/TherapistDashboard";
@@ -25,7 +25,12 @@ function App() {
         {/* Protected routes */}
         <Route element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/dashboard" element={
+          <RoleProtectedRoute allowedRoles={['user']}>
+             <UserDashboard />
+          </RoleProtectedRoute>
+          } />
+
           <Route path="/therapist/dashboard" element={
             <RoleProtectedRoute allowedRoles={['therapist']}>
               <TherapistDashboard />
