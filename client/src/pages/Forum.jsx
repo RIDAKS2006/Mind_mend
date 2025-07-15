@@ -93,7 +93,7 @@ const Forum = () => {
               {p.anonymous ? 'Anonymous' : p.user?.name || 'User'} •{' '}
               {new Date(p.createdAt).toLocaleString()}
             </div>
-            <p className="text-gray-800">{p.content}</p>
+            <p className="text-gray-900">{p.content}</p>
 
             {/* 🗑️ Delete button for post owner */}
             {!p.anonymous && userId === p.user?._id && (
