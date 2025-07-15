@@ -1,4 +1,3 @@
-// models/Booking.js
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
@@ -13,20 +12,13 @@ const bookingSchema = new mongoose.Schema({
     required: true
   },
   date: {
-    type: String, // You can also use Date if you prefer
+    type: String, // "YYYY-MM-DD"
     required: true
   },
   time: {
-    type: String,
+    type: String, // e.g., "10:00 AM"
     required: true
-  },
-  roomId: {
-    type: String,
-    required: true,
-    unique: true
   }
-}, {
-  timestamps: true // adds createdAt and updatedAt automatically
 });
 
 module.exports = mongoose.model('Booking', bookingSchema);

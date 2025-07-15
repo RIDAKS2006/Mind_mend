@@ -60,6 +60,18 @@ const getBookings = async (req, res) => {
   }
 };
 
+const getAllBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find()
+      .populate('user', 'name email')         // ✅ Include user info
+      .populate('therapist', 'name email');   // ✅ Include therapist info
+
+    res.status(200).json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
 // @desc    Get the video room ID for a booking
 // @route   GET /api/booking/:id/room
 // @access  Private
@@ -90,4 +102,5 @@ module.exports = {
   createBooking,
   getBookings,
   getRoomId,
+  getAllBookings
 };

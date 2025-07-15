@@ -1,6 +1,6 @@
 // server/controllers/therapistController.js
 
-const Booking = require('../models/bookingModel'); // Make sure this exists
+const Booking = require('../models/Booking'); // Make sure this exists
 
 // Controller to get room ID for video session
 const getMeetingRoom = async (req, res) => {

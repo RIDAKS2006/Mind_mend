@@ -5,6 +5,29 @@
 .input {
   @apply block w-full p-2 mb-3 border rounded focus:ring focus:border-blue-400;
 }
+
 .btn-primary {
   @apply bg-blue-600 text-white p-2 rounded hover:bg-blue-700 w-full;
+}
+
+/* Mood button intensity styles for Calendar */
+.mood-intensity-1 {
+  background-color: #CDB4DB;
+  border-radius: 50%;
+}
+.mood-intensity-2 {
+  background-color: #A8DADC;
+  border-radius: 50%;
+}
+.mood-intensity-3 {
+  background-color: #457B9D;
+  border-radius: 50%;
+}
+.mood-intensity-4 {
+  background-color: #FF6B6B;
+  border-radius: 50%;
+}
+.mood-intensity-5 {
+  background-color: #6B705C;
+  border-radius: 50%;
 }

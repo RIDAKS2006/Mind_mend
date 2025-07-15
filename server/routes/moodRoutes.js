@@ -1,9 +1,10 @@
 const express = require('express');
 const { protect } = require('../middlewares/authMiddleware');
-const { createPost, getPosts } = require('../controllers/forumController');
+const { logMood, getMoods, getMoodInsights } = require('../controllers/moodController');
 const router = express.Router();
 
-router.post('/', protect, createPost);
-router.get('/', protect, getPosts);
+router.post('/log', protect, logMood);
+router.get('/', protect, getMoods);
+router.get('/insights', protect, getMoodInsights);
 
 module.exports = router;
