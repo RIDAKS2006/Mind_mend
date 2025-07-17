@@ -1,19 +1,16 @@
-// Import required modules
 const express = require('express');
 const router = express.Router();
 
-// Import controller functions
-const { registerUser, loginUser } = require('../controllers/authController');
+const { registerUser, loginUser, getMe } = require('../controllers/authController');
+const { protect } = require('../middlewares/authMiddleware'); // ✅ Destructure the function
 
-// @route   POST /api/auth/register
-// @desc    Register a new user
-// @access  Public
+// Register route
 router.post('/register', registerUser);
 
-// @route   POST /api/auth/login
-// @desc    Login an existing user
-// @access  Public
+// Login route
 router.post('/login', loginUser);
 
-// Export the router
+// Get current user
+//router.get('/me', protect, getMe); // ✅ Use actual function, not an object
+
 module.exports = router;

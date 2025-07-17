@@ -12,7 +12,7 @@ const Booking = () => {
   const [availableTimes, setAvailableTimes] = useState([]);
   const [availability, setAvailability] = useState(null);
 
-  // 1. Load all therapists
+  // Load all therapists
   useEffect(() => {
     axios.get('/users')
       .then(res => {
@@ -22,7 +22,7 @@ const Booking = () => {
       .catch(err => console.error('Error loading therapists:', err));
   }, []);
 
-  // 2. Fetch availability + booked dates when therapist changes
+  // Fetch availability and bookings when therapist changes
   useEffect(() => {
     if (!selected.therapist) return;
 
@@ -52,7 +52,7 @@ const Booking = () => {
     setSelected(prev => ({ ...prev, date: null, time: '' }));
   }, [selected.therapist]);
 
-  // 3. On date change: load available times
+  // Handle date selection
   const handleDateChange = async (date) => {
     const dateStr = new Date(date).toISOString().split('T')[0];
     setSelected(prev => ({ ...prev, date: new Date(date), time: '' }));
@@ -75,14 +75,14 @@ const Booking = () => {
     }
   };
 
-  // 4. Disable dates not available
+  // Disable unavailable dates
   const isDateDisabled = (date) => {
     const dateStr = date.toISOString().split('T')[0];
     if (!availability) return true;
 
-    const inRange = availability.dateRanges.some(range => {
-      return dateStr >= range.start && dateStr <= range.end;
-    });
+    const inRange = availability.dateRanges.some(range =>
+      dateStr >= range.start && dateStr <= range.end
+    );
 
     const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
 
@@ -93,7 +93,7 @@ const Booking = () => {
     );
   };
 
-  // 5. Handle Submit
+  // Submit booking
   const handleSubmit = async () => {
     try {
       const payload = {
@@ -144,7 +144,7 @@ const Booking = () => {
           )}
         </div>
 
-        {/* Time Slot Selection + Booking */}
+        {/* Time Slot + Booking */}
         <div>
           {selected.date && (
             <>
